@@ -28,8 +28,8 @@ Example: Comparison of factor loadings of first and second principle components 
 
 ```
 
-![Picture1](factor loadings comparison.png)
 ![Picture1](volatility index price.png)
+![Picture1](factor loadings comparison.png)
 
 
 ```r
