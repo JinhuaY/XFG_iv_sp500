@@ -25,9 +25,12 @@ Datafile: sp500iv_11.csv, sp500iv_12.csv, sp500iv_13.csv, sp500iv_14.csv, sp500i
 Output: variance and cumulated variance explained
 
 Example: Comparison of factor loadings of first and second principle components through year 2011 to 2015.
+
 ```
 
 ![Picture1](factor loadings comparison.png)
+![Picture1](volatility index price.png)
+
 
 ```r
 # clear history
@@ -41,6 +44,19 @@ for (i in 1:5) {
     a = paste("sp500iv_1", i, sep = "")
     assign(paste("iv_1", i, sep = ""), read.csv(paste(a, ".csv", sep = ""), header = T, sep = ","))
 }
+
+#plot time series of all the volatility index price
+iv = rbind(iv_11, iv_12, iv_13, iv_14, iv_15)
+date = as.Date(iv$Date, "%Y/%m/%d")
+plot(iv$VXST_9d, type = "l", xlab = "Time", ylab = "Volatility Index Price", col = "red3", 
+    xaxt = "n", main = "Volatility Index Price")
+lines(iv$VIX_30d, col = "blue3")
+lines(iv$VXV_3m, col = "forestgreen")
+lines(iv$VXM_6m, col = "mediumvioletred")
+axis(1, at = iv$Date, labels = format(date, "%Y/%m"), las = 0)
+legend("topright", names(iv)[2:5], lwd = 2, col = c("red3", "blue3", "forestgreen", "mediumvioletred"), 
+    cex = 0.6, ncol = 2, x.intersp = 0.5, y.intersp = 0.7)
+
 
 # covariance
 cov = array(0, dim = c(4, 4, 5))
