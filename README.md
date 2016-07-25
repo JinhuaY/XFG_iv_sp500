@@ -188,4 +188,5 @@ lines(y5[, 2], type = "l", col = "blue3")
 legend("bottomleft", c("Prices projected to First PC", "Prices projected to Second PC"), 
     lwd = 1, col = c("red3", "blue3"), cex = 0.75)
 axis(1, at = c(1:261), labels = iv$Date[1044:1304], las = 0)
+
 ```
